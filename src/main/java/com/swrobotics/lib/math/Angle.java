@@ -39,6 +39,30 @@ public final class Angle {
         return Math.toDegrees(-angle);
     }
 
+    public void setCWRad(double a) {
+        angle = -a;
+    }
+
+    public void setCCWRad(double a) {
+        angle = a;
+    }
+
+    public void setCWDeg(double a) {
+        angle = Math.toRadians(-a);
+    }
+
+    public void setCCWDeg(double a) {
+        angle = Math.toRadians(a);
+    }
+
+    public double getSin() {
+        return Math.sin(angle);
+    }
+
+    public double getCos() {
+        return Math.cos(angle);
+    }
+
     private double normalize(double value, double min, double max) {
         double width = max - min;
         double offset = value - min;

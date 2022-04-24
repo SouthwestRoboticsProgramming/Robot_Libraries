@@ -88,7 +88,7 @@ public final class TalonMotor implements Motor {
 
     @Override
     public double getVelocity() {
-        return talon.getSelectedSensorVelocity() / ENCODER_TICKS_PER_ROTATION * 20 * Math.PI;
+        return talon.getSelectedSensorVelocity() / ENCODER_TICKS_PER_ROTATION * 10 * 60;
     }
 
     @Override

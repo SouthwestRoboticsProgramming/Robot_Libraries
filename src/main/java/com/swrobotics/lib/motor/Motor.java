@@ -33,10 +33,10 @@ public interface Motor {
     public void setPosition(Angle position);
 
     /**
-     * Gets the motor's rotational velocity in revolutions per second.
+     * Gets the motor's rotational velocity in revolutions per minute.
      * A positive velocity corresponds to clockwise rotation.
      * 
-     * @return Velocity in revolutions per second
+     * @return Velocity in revolutions per minute
      */
     public double getVelocity();
 
