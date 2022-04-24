@@ -1,5 +1,7 @@
 package com.swrobotics.lib.motor;
 
+import com.swrobotics.lib.math.Angle;
+
 public interface Motor {
     /**
      * Updates the PID controller and the motor's velocity. This method
@@ -10,12 +12,11 @@ public interface Motor {
 
     /**
      * Gets the motor's rotational position relative to its starting
-     * position. The output is in clockwise radians, and are not 
-     * normalized.
+     * position.
      * 
      * @return Rotational position in clockwise radians
      */
-    public double getPosition();
+    public Angle getPosition();
 
     /**
      * Resets the motor's rotational position to zero. This sets the
@@ -29,13 +30,13 @@ public interface Motor {
      * 
      * @param position Rotational position in clockwise radians
      */
-    public void setPosition(double position);
+    public void setPosition(Angle position);
 
     /**
-     * Gets the motor's rotational velocity in radians per second.
+     * Gets the motor's rotational velocity in revolutions per second.
      * A positive velocity corresponds to clockwise rotation.
      * 
-     * @return Velocity in radians per second
+     * @return Velocity in revolutions per second
      */
     public double getVelocity();
 

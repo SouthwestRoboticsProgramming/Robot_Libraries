@@ -2,6 +2,7 @@ package com.swrobotics.lib.motor;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.BaseTalon;
+import com.swrobotics.lib.math.Angle;
 import com.swrobotics.lib.math.MathUtil;
 
 import edu.wpi.first.math.controller.PIDController;
@@ -21,8 +22,8 @@ public final class TalonMotor implements Motor {
 
     private RunState state;
     private double target;
-    private double clampMin, clampMax;
     private double positionOffset;
+    private double clampMin, clampMax;
 
     /**
      * Creates a new TalonMotor wrapping around a Talon motor
@@ -52,7 +53,7 @@ public final class TalonMotor implements Motor {
                 break;
             case PID_POSITION:
             case HOLD: {
-                double output = pid.calculate(getPosition(), target);
+                double output = pid.calculate(getPosition().getCWRad(), target);
                 output = MathUtil.clamp(output, clampMin, clampMax);
                 talon.set(ControlMode.PercentOutput, output);
                 break;
@@ -71,8 +72,8 @@ public final class TalonMotor implements Motor {
     }
 
     @Override
-    public double getPosition() {
-        return getRawPosition() - positionOffset;
+    public Angle getPosition() {
+        return Angle.cwRad(getRawPosition() - positionOffset);
     }
 
     @Override
@@ -81,8 +82,8 @@ public final class TalonMotor implements Motor {
     }
 
     @Override
-    public void setPosition(double position) {
-        positionOffset = getRawPosition() - position;
+    public void setPosition(Angle position) {
+        positionOffset = getRawPosition() - position.getCWRad();
     }
 
     @Override
@@ -128,7 +129,7 @@ public final class TalonMotor implements Motor {
 
         
         state = RunState.HOLD;
-        target = getPosition();
+        target = getPosition().getCWRad();
         resetPID();
     }
 
