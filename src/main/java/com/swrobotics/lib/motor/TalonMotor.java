@@ -52,13 +52,13 @@ public final class TalonMotor implements Motor {
                 break;
             case PID_POSITION:
             case HOLD: {
-                double output = pid.calculate(talon.getSelectedSensorPosition(), target);
+                double output = pid.calculate(getPosition(), target);
                 output = MathUtil.clamp(output, clampMin, clampMax);
                 talon.set(ControlMode.PercentOutput, output);
                 break;
             }
             case PID_VELOCITY: {
-                double output = pid.calculate(talon.getSelectedSensorVelocity(), target);
+                double output = pid.calculate(getVelocity(), target);
                 output = MathUtil.clamp(output, clampMin, clampMax);
                 talon.set(ControlMode.PercentOutput, output);
                 break;
