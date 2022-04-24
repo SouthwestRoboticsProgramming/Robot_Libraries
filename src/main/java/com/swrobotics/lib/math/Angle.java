@@ -177,4 +177,11 @@ public final class Angle {
         dest.angle = angle - Math.toRadians(a);
         return dest;
     }
+
+    @Override
+    public String toString() {
+        return "Angle{" +
+                "ccwdeg=" + getCCWDeg() +
+                '}';
+    }
 }
