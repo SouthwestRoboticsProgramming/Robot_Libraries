@@ -59,8 +59,48 @@ public final class Angle {
         return this;
     }
 
+    public Angle addCWRad(double a) {
+        angle -= a;
+        return this;
+    }
+
+    public Angle addCCWRad(double a) {
+        angle += a;
+        return this;
+    }
+
+    public Angle addCWDeg(double a) {
+        angle -= Math.toRadians(a);
+        return this;
+    }
+
+    public Angle addCCWDeg(double a) {
+        angle += Math.toRadians(a);
+        return this;
+    }
+
     public Angle add(Angle o, Angle dest) {
         dest.angle = angle + o.angle;
+        return dest;
+    }
+
+    public Angle addCWRad(double a, Angle dest) {
+        dest.angle = angle - a;
+        return dest;
+    }
+
+    public Angle addCCWRad(double a, Angle dest) {
+        dest.angle = angle + a;
+        return dest;
+    }
+
+    public Angle addCWDeg(double a, Angle dest) {
+        dest.angle = angle - Math.toRadians(a);
+        return dest;
+    }
+
+    public Angle addCCWDeg(double a, Angle dest) {
+        dest.angle = angle + Math.toRadians(a);
         return dest;
     }
 
@@ -69,8 +109,48 @@ public final class Angle {
         return this;
     }
 
+    public Angle subCWRad(double a) {
+        angle += a;
+        return this;
+    }
+
+    public Angle subCCWRad(double a) {
+        angle -= a;
+        return this;
+    }
+
+    public Angle subCWDeg(double a) {
+        angle += Math.toRadians(a);
+        return this;
+    }
+
+    public Angle subCCWDeg(double a) {
+        angle -= Math.toRadians(a);
+        return this;
+    }
+
     public Angle sub(Angle o, Angle dest) {
         dest.angle = angle - o.angle;
+        return dest;
+    }
+
+    public Angle subCWRad(double a, Angle dest) {
+        dest.angle = angle + a;
+        return dest;
+    }
+
+    public Angle subCCWRad(double a, Angle dest) {
+        dest.angle = angle - a;
+        return dest;
+    }
+
+    public Angle subCWDeg(double a, Angle dest) {
+        dest.angle = angle + Math.toRadians(a);
+        return dest;
+    }
+
+    public Angle subCCWDeg(double a, Angle dest) {
+        dest.angle = angle - Math.toRadians(a);
         return dest;
     }
 }
